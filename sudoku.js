@@ -26,7 +26,13 @@ function solve(board) {
 //4. Рекурсивное решение — solve Анастасия
 
 //5. Вызов решения и вывод результата Андрей
-
-function prettyBoard() {
-// Дима
+// Функция, которая выводит судоку в консоль ⬇
+function prettyBoard(input) {
+  console.log('\n -------------------------------------')
+  input.forEach(el => {
+     console.log( ' | ' + el.join(' | ') + ' | ' + '\n -------------------------------------' )
+})
+console.log('\n')
+ 
 }
+prettyBoard(input)
