@@ -19,7 +19,7 @@ function solve(board) {
         }
         return null;
     }
-}
+}   
 
 //3. Проверка правильности числа — validate Дима
 
