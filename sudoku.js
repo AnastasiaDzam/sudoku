@@ -22,7 +22,37 @@ function solve(board) {
 }   
 
 //3. Проверка правильности числа — validate Дима
+const validate = (num, pos, board) => {
+    const [r, c] = pos;  // Позиция пустой клетки
 
+    // Проверка строки
+    for (let i = 0; i < size; i++) {
+        if (board[i][c] === num && i !== r) {
+            return false;  // Если число уже есть в строке, вернуть false
+        }
+    }
+
+    // Проверка столбца
+    for (let i = 0; i < size; i++) {
+        if (board[r][i] === num && i !== c) {
+            return false;  // Если число уже есть в столбце, вернуть false
+        }
+    }
+
+    // Проверка малого квадрата 3x3
+    const boxRow = Math.floor(r / boxSize) * boxSize;
+    const boxCol = Math.floor(c / boxSize) * boxSize;
+
+    for (let i = boxRow; i < boxRow + boxSize; i++) {
+        for (let j = boxCol; j < boxCol + boxSize; j++) {
+            if (board[i][j] === num && i !== r && j !== c) {
+                return false;  // Если число уже есть в 3x3 блоке, вернуть false
+            }
+        }
+    }
+
+    return true;  // Если число подходит, вернуть true
+}
 //4. Рекурсивное решение — solve Анастасия
 
 //5. Вызов решения и вывод результата Андрей
