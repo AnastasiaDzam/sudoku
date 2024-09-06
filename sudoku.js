@@ -1,9 +1,14 @@
+const fs = require("fs");
 function read() {
-  /**
-   * Прочесть файл puzzles.txt в кодировке 'utf-8' и вернуть эти данные из функции
-   */
+  const getPuzzle = fs.readFileSync("./puzzles.txt", "utf-8").split("\n");
+  const gameArr = [];
+  const callGame = getPuzzle[process.argv[2] - 1];
+  for (let i = 0; i < callGame.length; i += 9) {
+    gameArr.push(callGame.slice(i, i + 9).split(""));
+  }
+   return gameArr;
 }
-
+g
 function solve() {
   /**
    * Принимает игровое поле в том формате, в котором его вернули из функции read.
@@ -25,3 +30,4 @@ function prettyBoard() {
    * Подумай, как симпатичнее его вывести.
    */
 }
+// .split('')
