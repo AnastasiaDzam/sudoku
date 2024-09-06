@@ -1,6 +1,6 @@
 const fs = require("fs");
 function read() {
-1_createReadFunction
+
   const getPuzzle = fs.readFileSync("./puzzles.txt", "utf-8").split("\n");
   const gameArr = [];
   const callGame = getPuzzle[process.argv[2] - 1];
@@ -9,34 +9,33 @@ function read() {
   }
    return gameArr;
 }
-g
-function solve() {
-  /**
-   * Принимает игровое поле в том формате, в котором его вернули из функции read.
-   * Возвращает игровое поле после попытки его решить.
-   */
+// function solve() {
+//   /**
+//    * Принимает игровое поле в том формате, в котором его вернули из функции read.
+//    * Возвращает игровое поле после попытки его решить.
+//    */
 
-  /**
-   *Андрей
-   */
-}
+//   /**
+//    *Андрей
+//    */
+// }
 
-function solve(board) {
+// function solve(board) {
 
-    const size = 9;
-    const boxSize = 3;
+//     const size = 9;
+//     const boxSize = 3;
 
-    const findEmpty = (board) => {
-        for (let r = 0; r < size; r++) {
-            for (let c = 0; c < size; c++) {
-                if(board[r][c] === '.') {
-                    return [r,c];
-                }
-            }
-        }
-        return null;
-    }
-}   
+//     const findEmpty = (board) => {
+//         for (let r = 0; r < size; r++) {
+//             for (let c = 0; c < size; c++) {
+//                 if(board[r][c] === '.') {
+//                     return [r,c];
+//                 }
+//             }
+//         }
+//         return null;
+//     }
+// }   
 
 //3. Проверка правильности числа — validate Дима
 const validate = (num, pos, board) => {
@@ -74,7 +73,7 @@ const validate = (num, pos, board) => {
 //4. Рекурсивное решение — solve Анастасия
 
 const solve = () => {
-    const currPos = findEmpty(board);  // Поиск пустой клетки
+    const currPos = findEmpty(read());  // Поиск пустой клетки
 
     if (currPos === null) {
         return true;  // Если пустых клеток нет, судоку решён
@@ -114,5 +113,6 @@ console.log('\n')
 
 // .split('')
 
-prettyBoard(input)
+prettyBoard(read())
+prettyBoard(solve())
 
