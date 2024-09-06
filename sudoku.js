@@ -25,7 +25,7 @@ function solve(board) {
 const validate = (num, pos, board) => {
     const [r, c] = pos;  // Позиция пустой клетки
 
-    // Проверка строки
+
     for (let i = 0; i < size; i++) {
         if (board[i][c] === num && i !== r) {
             return false;  // Если число уже есть в строке, вернуть false
@@ -55,7 +55,35 @@ const validate = (num, pos, board) => {
 }
 //4. Рекурсивное решение — solve Анастасия
 
+const solve = () => {
+    const currPos = findEmpty(board);  // Поиск пустой клетки
+
+    if (currPos === null) {
+        return true;  // Если пустых клеток нет, судоку решён
+    }
+
+    for (let i = 1; i < size + 1; i++) {  // Пробуем числа от 1 до 9
+        const currNum = i.toString();
+        const isValid = validate(currNum, currPos, board);  // Проверяем, можно ли вставить число
+
+        if (isValid) {
+            const [x, y] = currPos;
+            board[x][y] = currNum;  // Временно вставляем число
+
+            if (solve()) {
+                return true;  // Если рекурсивное решение нашло ответ, завершить
+            }
+
+            board[x][y] = '.';  // Если не нашлось решение, возвращаем клетку в исходное состояние
+        }
+    }
+
+    return false;  // Если для текущей пустой клетки не нашлось подходящего числа, возвращаемся назад
+}
+
 //5. Вызов решения и вывод результата Андрей
+
+
 // Функция, которая выводит судоку в консоль ⬇
 function prettyBoard(input) {
   console.log('\n -------------------------------------')
