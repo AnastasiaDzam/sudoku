@@ -1,4 +1,21 @@
+const fs = require("fs");
 function read() {
+1_createReadFunction
+  const getPuzzle = fs.readFileSync("./puzzles.txt", "utf-8").split("\n");
+  const gameArr = [];
+  const callGame = getPuzzle[process.argv[2] - 1];
+  for (let i = 0; i < callGame.length; i += 9) {
+    gameArr.push(callGame.slice(i, i + 9).split(""));
+  }
+   return gameArr;
+}
+g
+function solve() {
+  /**
+   * Принимает игровое поле в том формате, в котором его вернули из функции read.
+   * Возвращает игровое поле после попытки его решить.
+   */
+
   /**
    *Андрей
    */
@@ -52,6 +69,7 @@ const validate = (num, pos, board) => {
     }
 
     return true;  // Если число подходит, вернуть true
+
 }
 //4. Рекурсивное решение — solve Анастасия
 
@@ -93,4 +111,8 @@ function prettyBoard(input) {
 console.log('\n')
  
 }
+
+// .split('')
+
 prettyBoard(input)
+
